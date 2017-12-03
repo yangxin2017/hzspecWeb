@@ -1,0 +1,16 @@
+.links{
+    margin-top: 50px;
+    overflow: hidden;
+    .lk{
+        width: 33.33%;float: left;
+        text-align: center;cursor: pointer;
+        span{
+            font-size: 16px;color: #B8D5EF;
+        }
+        &.sel, &:hover{
+            span{
+                color: #fff;
+            }
+        }
+    }
+}

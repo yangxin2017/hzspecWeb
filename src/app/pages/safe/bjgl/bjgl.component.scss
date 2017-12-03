@@ -1,0 +1,84 @@
+.search-condition{
+    border-radius: 30px;
+    background: #fff;margin-top: 50px;
+    padding: 20px;
+    table{
+        width: 100%;
+        .lbl{
+            padding-left: 70px;
+        }
+        tr td{
+            line-height: 40px;
+        }
+    }
+
+    .input-text{
+        border: solid 1px #2A89DC;
+        height: 24px;border-radius: 24px;
+        padding-left: 5px;width: 100%;
+    }
+
+    .selects{
+        background: #1E83D9;
+        border-radius: 20px;
+        
+        padding: 2px 10px;color: #fff;
+    }
+
+    .btn-confirm{
+        background: linear-gradient(180deg, #2C5F8E, #0E3960);
+        border-radius:30px;color: #fff;
+        &:hover{
+            background: linear-gradient(0deg, #2C5F8E, #0E3960);
+        }
+    }
+}
+.bjgl-content{
+    margin-top: 5px;
+    border-radius: 30px;
+    background: #fff;
+    padding: 20px;
+    .tl{
+        text-align: center;
+        color: #053663;font-size: 18px;
+    }
+    .lists{
+        height: 100%;
+        overflow: hidden;
+        .ls{
+            line-height: 100px;height: 100px;padding-top: 8px;
+            border-bottom: solid 1px #C7E2F8;
+            .ions{
+                float: left;width: 150px;
+            }
+            .param{
+                margin-left: 150px;padding-top: 10px;
+                .name{
+                    .circle{
+                        width: 16px;height: 16px;border: solid 1px #84BBEB;
+                        border-radius: 16px;display: inline-block;vertical-align: middle;
+                    }
+                    color: #053663;font-weight: bold;
+                    font-size: 14px;line-height: 16px;
+                }
+                .con{
+                    line-height: 30px;
+                    margin-top: 20px;
+                    span{
+                        margin-right: 80px;
+                    }
+                }
+                .rg-infor{
+                    float: right;line-height: 30px;width:100px;text-align:center;
+                    .time{
+                        font-size: 12px;color: #C7E2F8;
+                    }
+                    .btn-ig{
+                        padding: 5px 15px;background: #1E83D9;
+                        border-radius: 15px;color: #fff;font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}

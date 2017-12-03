@@ -1,0 +1,46 @@
+.chart-canvas{
+    float: left;
+    width: 50%;
+}
+.chart-infor{
+    margin-left: 50%;
+    .lin{
+        line-height: 34px;
+        border-bottom: solid 1px #dfdfdf;
+        padding-left: 5px;
+        .dot{
+            margin-left: 10px;
+            width: 7px;height: 7px;border-radius: 7px;
+            display: inline-block;background: #BFDDC2;
+        }
+        .name{
+            margin-left: 20px;
+            color: #333;font-size: 14px;
+        }
+        .val{
+            color: #BFDDC2;
+            font-size: 14px;
+            float: right;
+        }
+        .rate{
+            color: #333;font-size: 14px;
+            float: right;margin-left: 20px;
+        }
+        &.c2{
+            .dot{background: #A8BEDC;}
+            .val{color: #A8BEDC;}
+        }
+        &.c3{
+            .dot{background: #F8CF6D;}
+            .val{color: #F8CF6D;}
+        }
+        &.c4{
+            .dot{background: #9F86DD;}
+            .val{color: #9F86DD;}
+        }
+        &.c5{
+            .dot{background: #E5A5C3;}
+            .val{color: #E5A5C3;}
+        }
+    }
+}

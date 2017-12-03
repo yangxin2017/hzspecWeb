@@ -1,0 +1,15 @@
+.header-container{
+    height: 100px;
+    line-height: 100px;
+    .menus{
+        float:right;
+        li{
+            a{font-size:16px;color:#B8D5EF;text-decoration:none;}
+            float:left;
+            margin-left:90px;
+            &.sel,&:hover{
+                a{color:#fff;}
+            }
+        }
+    }
+}
