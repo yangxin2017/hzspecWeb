@@ -15,6 +15,7 @@ export const routes: Routes = [
   { path: 'login', loadChildren: 'app/pages/login/login.module#LoginModule' },
   { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
   { path: 'safe', loadChildren: 'app/pages/safe/safe.module#SafeModule' },
+  { path: 'equip', loadChildren: 'app/pages/equip/equip.module#EquipModule' },
 ];
 
 export function RestangularConfigFactory (RestangularProvider) {

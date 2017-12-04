@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-*{margin:0;padding:0;list-style:none;font-family:"微软雅黑";box-sizing:border-box;}
+*{margin:0;padding:0;list-style:none;font-family:"微软雅黑";box-sizing:border-box;font-size: 12px;}
 html,body{width:100%;height:100%;}
 
 .form-group{
@@ -59,6 +59,9 @@ html,body{width:100%;height:100%;}
 .pl-30{
     padding-left: 30px;
 }
+.pr-20{
+    padding-right: 20px;
+}
 
 .cur-pointer{
     cursor: pointer;
@@ -81,3 +84,40 @@ html,body{width:100%;height:100%;}
 .chart-box .hd .lengs .lg .sx{color:#2687DB;font-size: 12px;}
 .chart-box .bd{height: calc(100% - 35px);}
 .chart-box .chart-canvas{height: 100%;background: #f00;margin-top: 14px;}
+
+.iosCheck {
+/* Blue edition */
+}
+.iosCheck input {
+display: none;
+}
+.iosCheck i {
+display: inline-block;
+cursor: pointer;
+padding-right: 25px;
+transition: all ease 0.2s;
+-webkit-transition: all ease 0.2s;
+border-radius: 25px;
+box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.iosCheck i:before {
+display: block;
+content: '';
+width: 25px;
+height: 25px;
+border-radius: 25px;
+background: white;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.iosCheck :checked + i {
+padding-right: 0;
+padding-left: 25px;
+background: #00e970;
+box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), inset 0 0 40px #00e079;
+-webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), inset 0 0 40px #00e079;
+}
+.iosCheck.blue :checked + i {
+background: #6cbff0;
+box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), inset 0 0 40px #0093ea;
+-webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), inset 0 0 40px #0093ea;
+}

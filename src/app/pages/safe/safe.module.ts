@@ -11,7 +11,27 @@ import { LdsmComponent } from './ldsm/ldsm.component';
 import { EyljComponent } from './eylj/eylj.component';
 
 export const routes: Routes = [
-  { path: '', component: SafeComponent, pathMatch: 'full' }
+  { path: '', component: SafeComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'bjgl',
+        pathMatch: 'full'
+      },
+      {
+        path: 'bjgl',
+        component: BjglComponent
+      },
+      {
+        path: 'eylj',
+        component: EyljComponent
+      },
+      {
+        path: 'ldsm',
+        component: LdsmComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

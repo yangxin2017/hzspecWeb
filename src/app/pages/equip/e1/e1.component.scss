@@ -1,0 +1,26 @@
+.e1{
+    height: 100%;
+    margin-right: 10px;
+    margin-top: 10px;
+    position: relative;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    .wifi{
+        position: absolute;right: 0;top: 0;padding: 3px 10px;
+        height: 47px;border-radius: 0 20px 0 20px;
+        background: #3E81BE;text-align: center;
+        img{
+            margin-top: 5px;
+        }
+    }
+
+    .lf-con{
+        float: left;width: 45%;height: 100%;
+        background: #5A98CE;
+        padding: 10px;border-radius: 20px 0 0 20px;
+        .tl{
+            font-size: 16px;color: #fff;
+            text-shadow: 4px 4px 1px #333;
+        }
+    }
+}
