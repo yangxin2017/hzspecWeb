@@ -1,0 +1,77 @@
+.infors{
+    background: #fff;
+    border-radius: 30px;
+    padding: 20px;height: 100%;
+    .title{
+        text-align: center;font-size: 16px;color: #053663;font-weight: bold;
+    }
+
+    .lists{
+        .ls{
+            margin:0 -20px;padding:5px 20px 0px 20px;
+            &:hover{
+                background: #EAF1F6;
+            }
+            .hd{
+                height:35px;line-height: 35px;
+                img{vertical-align: middle;}
+                .name{color:#053663;font-size:16px;margin-left:12px;vertical-align:middle;}
+                .fr{margin-left:30px;}
+                a{margin-right:20px;color:#A4BFD8;text-decoration:none;vertical-align:middle;}
+                a.white{
+                    &.sel,&:hover{
+                        color:#6EC534;
+                        font-weight: bold;
+                    }
+                }
+                a.xssy{
+                    &.sel,&:hover{
+                        color:#FC8E34;
+                        font-weight: bold;
+                    }
+                }
+                a.lssq{
+                    &.sel,&:hover{
+                        color:#154CBC;
+                        font-weight: bold;
+                    }
+                }
+                a.black{
+                    &.sel,&:hover{
+                        color:#D01135;
+                        font-weight: bold;
+                    }
+                }
+                .time{float:right;color:#AAC3DB;font-size:12px;}
+            }
+            .bd{
+                padding:8px 0;
+                border-bottom: solid 1px #C7E2F8;
+                .lt{
+                    line-height: 25px;
+                    min-width: 220px;display:inline-block;
+                    .sj{
+                        cursor:pointer;
+                    }
+                    .p{
+                        line-height: 17px;background: #D7E5F1;
+                        color: #333;margin-right: 7px;padding:0 5px;display: inline-block;
+                    }
+                    .ddd{
+                        cursor: pointer;position: relative;top:4px;
+                    }
+                }
+                .rg-ls{
+                    float:right;
+                    a{
+                        color:#9DBAD5;text-decoration: none;margin-right:20px;
+                        img{vertical-align: middle;margin-right: 5px;}
+                        &:hover{
+                            color:#154CBC;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
