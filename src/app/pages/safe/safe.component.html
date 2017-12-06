@@ -3,18 +3,24 @@
   <app-nhead></app-nhead>
 
   <div class="links">
+    <a href="javascript:void(0)" [routerLink]="['bjgl']">
     <div class="lk">
       <img src="assets/img/safe/bjgl.png" alt="" /><br/>
       <span>报警管理</span>
     </div>
+    </a>
+    <a href="javascript:void(0)" [routerLink]="['ldsm']">
     <div class="lk">
       <img src="assets/img/safe/ldsm.png" alt="" /><br/>
       <span>漏洞扫描</span>
     </div>
+    </a>
+    <a href="javascript:void(0)" [routerLink]="['eylj']">
     <div class="lk">
       <img src="assets/img/safe/eylj.png" alt="" /><br/>
       <span>恶意拦截</span>
     </div>
+    </a>
   </div>
 
   <router-outlet></router-outlet>

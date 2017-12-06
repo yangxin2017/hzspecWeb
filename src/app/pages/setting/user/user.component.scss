@@ -1,6 +1,12 @@
 .user-container{
     background: #fff;border-radius:30px;padding:40px;;
-    margin-top:60px;
+    margin-top:60px;position:relative;
+    height: calc(100% - 300px);
+    .pos{
+        position:absolute;
+        top:-18px;left:50%;
+        margin-left:-10px;
+    }
     .hd{
         text-align: right;
         .btn-add{
@@ -14,12 +20,22 @@
         }
     }
     .bd{
+        margin:0 -40px;
         padding-top: 20px;
+        height: calc(100% - 18px);
         td{
+            &:first-child{
+                padding-left:20px;
+            }
             border-bottom:solid 1px #C7E2F8;height:78px;
             .circle{
                 width:16px;height:16px;border-radius:16px;
                 border:solid 1px #133F68;display:inline-block;
+            }
+        }
+        tr:hover{
+            td{
+                background: #EAF1F6;
             }
         }
     }

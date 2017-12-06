@@ -10,6 +10,11 @@ export class UserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    new PerfectScrollbar('#userScroll', {
+      wheelSpeed: 2,
+      wheelPropagation: true,
+      minScrollbarLength: 20
+    });
   }
 
 }

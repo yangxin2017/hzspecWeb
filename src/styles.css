@@ -121,3 +121,23 @@ background: #6cbff0;
 box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), inset 0 0 40px #0093ea;
 -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), inset 0 0 40px #0093ea;
 }
+
+.relpos{position:relative;}
+.dropdownlist{
+    position:absolute;left:0px;top:20px;z-index:99;
+    border-radius:7px;background:#E4ECF3;
+    
+}
+.dropdownlist a{
+    display:block;cursor: pointer;
+    border-bottom: solid 1px #fff;color:#1E83D9;
+    font-size: 12px;text-decoration:none;
+    padding: 7px 30px;
+}
+.dropdownlist a:last-child{
+    border-bottom:0;
+}
+.dropdownlist a:hover{
+    background: #1E83D9;
+    color:#fff;
+}

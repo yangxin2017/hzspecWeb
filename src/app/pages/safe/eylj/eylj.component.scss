@@ -2,7 +2,12 @@
     background: #fff;
     margin-top: 50px;
     border-radius: 30px;
-    padding: 20px;
+    padding: 20px;position:relative;
+    .pos{
+        position:absolute;
+        top:-18px;left:83.33%;
+        margin-left:-10px;
+    }
 
     .mod{
         .iosCheck{

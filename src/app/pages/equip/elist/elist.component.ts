@@ -10,6 +10,11 @@ export class ElistComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    new PerfectScrollbar('#equipScroll', {
+      wheelSpeed: 2,
+      wheelPropagation: true,
+      minScrollbarLength: 20
+    });
   }
 
 }

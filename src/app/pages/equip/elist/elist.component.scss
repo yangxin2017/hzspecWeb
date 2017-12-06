@@ -7,6 +7,9 @@
     }
 
     .lists{
+        height: calc(100% - 18px);
+        overflow:auto;margin:0 -20px;padding: 0 20px;
+        border-radius:30px;
         .ls{
             margin:0 -20px;padding:5px 20px 0px 20px;
             &:hover{

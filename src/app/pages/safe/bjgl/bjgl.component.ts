@@ -10,6 +10,11 @@ export class BjglComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    new PerfectScrollbar('#bjglScroll', {
+      wheelSpeed: 2,
+      wheelPropagation: true,
+      minScrollbarLength: 20
+    });
   }
 
 }

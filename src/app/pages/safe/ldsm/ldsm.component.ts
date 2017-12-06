@@ -10,6 +10,11 @@ export class LdsmComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    new PerfectScrollbar('#ldsmScroll', {
+      wheelSpeed: 2,
+      wheelPropagation: true,
+      minScrollbarLength: 20
+    });
   }
 
 }

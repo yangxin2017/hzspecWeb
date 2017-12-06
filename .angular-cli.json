@@ -19,9 +19,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css"
       ],
       "scripts": [
+        "../node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

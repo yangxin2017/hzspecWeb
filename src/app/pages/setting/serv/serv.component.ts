@@ -10,6 +10,11 @@ export class ServComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    new PerfectScrollbar('#servScroll', {
+      wheelSpeed: 2,
+      wheelPropagation: true,
+      minScrollbarLength: 20
+    });
   }
 
 }

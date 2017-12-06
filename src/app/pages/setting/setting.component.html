@@ -3,18 +3,24 @@
   <app-nhead></app-nhead>
 
   <div class="links">
-    <div class="lk">
-      <img src="assets/img/setting/n1.png" alt="" /><br/>
-      <span>用户与服务设置</span>
-    </div>
-    <div class="lk">
-      <img src="assets/img/setting/n2.png" alt="" /><br/>
-      <span>用户管理</span>
-    </div>
-    <div class="lk">
-      <img src="assets/img/setting/n3.png" alt="" /><br/>
-      <span>路由列表</span>
-    </div>
+    <a href="javascript:void(0)" [routerLink]="['serv']">
+      <div class="lk">
+        <img src="assets/img/setting/n1.png" alt="" /><br/>
+        <span>用户与服务设置</span>
+      </div>
+    </a>
+    <a href="javascript:void(0)" [routerLink]="['user']">
+      <div class="lk">
+        <img src="assets/img/setting/n2.png" alt="" /><br/>
+        <span>用户管理</span>
+      </div>
+    </a>
+    <a href="javascript:void(0)" [routerLink]="['router']">
+      <div class="lk">
+        <img src="assets/img/setting/n3.png" alt="" /><br/>
+        <span>路由列表</span>
+      </div>
+   </a>
   </div>
 
   <router-outlet></router-outlet>

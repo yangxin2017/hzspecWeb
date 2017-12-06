@@ -1,11 +1,12 @@
 <div class="router-container">
+  <img src="assets/img/safe/sj.png" class="pos" alt="" />
 	<div class="filters">
 		<a href="javascript:void(0)">类型过滤一</a>
 		<a href="javascript:void(0)">类型过滤二</a>
 		<a href="javascript:void(0)">类型过滤三</a>
 	</div>
 
-	<div class="lists">
+	<div class="lists relpos" id="routerScroll">
 		<div class="ls">
 			<div class="hd">
 				<img src="assets/img/setting/wifi_online.png" alt="" />
@@ -63,11 +64,35 @@
 				<span class="lt"><b>网关公网IP：</b>192.168.1.23</span>
 				<span class="lt"><b>设备数量：</b>0</span><br/>
 				<span class="lt"><b>网关内网IP：</b><span>192.168.1.23</span></span>
-				<span class="lt"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" /></span><br/>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
 				<span class="lt"><b>报警数量：</b><span>0</span></span>
-				<span class="lt"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" /></span><br/>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
 
-				<span class="lt"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" /></span>
+				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
+					<span class="dropdownlist" style="left:58px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span>
 
 			</div>
 		</div>
@@ -129,13 +154,395 @@
 				<span class="lt"><b>网关公网IP：</b>192.168.1.23</span>
 				<span class="lt"><b>设备数量：</b>0</span><br/>
 				<span class="lt"><b>网关内网IP：</b><span>192.168.1.23</span></span>
-				<span class="lt"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" /></span><br/>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
 				<span class="lt"><b>报警数量：</b><span>0</span></span>
-				<span class="lt"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" /></span><br/>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
 
-				<span class="lt"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" /></span>
+				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
+					<span class="dropdownlist" style="left:58px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span>
 
 			</div>
 		</div>
+
+		<div class="ls">
+			<div class="hd">
+				<img src="assets/img/setting/wifi_online.png" alt="" />
+				<b class="name">allas is device</b>
+				
+				<a class="offline" href="javascript:void(0)">离线</a>
+
+				<ul class="rglist">
+					<li><img src="assets/img/setting/all.png" alt="" />所有设备</li>
+					<li><img src="assets/img/setting/white.png" alt="" />白名单设备</li>
+					<li><img src="assets/img/setting/safe.png" alt="" />安全警示</li>
+				</ul>
+			</div>
+			<div class="rg-ls">
+				<table class="offinfor">
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						离线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						离线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						在线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						在线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="bd">
+				<span class="lt"><b>网关公网IP：</b>192.168.1.23</span>
+				<span class="lt"><b>设备数量：</b>0</span><br/>
+				<span class="lt"><b>网关内网IP：</b><span>192.168.1.23</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+				<span class="lt"><b>报警数量：</b><span>0</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+
+				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
+					<span class="dropdownlist" style="left:58px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span>
+
+			</div>
+		</div>
+		<div class="ls">
+			<div class="hd">
+				<img src="assets/img/setting/wifi_online.png" alt="" />
+				<b class="name">allas is device</b>
+				
+				<a class="offline" href="javascript:void(0)">离线</a>
+
+				<ul class="rglist">
+					<li><img src="assets/img/setting/all.png" alt="" />所有设备</li>
+					<li><img src="assets/img/setting/white.png" alt="" />白名单设备</li>
+					<li><img src="assets/img/setting/safe.png" alt="" />安全警示</li>
+				</ul>
+			</div>
+			<div class="rg-ls">
+				<table class="offinfor">
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						离线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						离线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						在线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						在线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="bd">
+				<span class="lt"><b>网关公网IP：</b>192.168.1.23</span>
+				<span class="lt"><b>设备数量：</b>0</span><br/>
+				<span class="lt"><b>网关内网IP：</b><span>192.168.1.23</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+				<span class="lt"><b>报警数量：</b><span>0</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+
+				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
+					<span class="dropdownlist" style="left:58px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span>
+
+			</div>
+		</div>
+		<div class="ls">
+			<div class="hd">
+				<img src="assets/img/setting/wifi_online.png" alt="" />
+				<b class="name">allas is device</b>
+				
+				<a class="offline" href="javascript:void(0)">离线</a>
+
+				<ul class="rglist">
+					<li><img src="assets/img/setting/all.png" alt="" />所有设备</li>
+					<li><img src="assets/img/setting/white.png" alt="" />白名单设备</li>
+					<li><img src="assets/img/setting/safe.png" alt="" />安全警示</li>
+				</ul>
+			</div>
+			<div class="rg-ls">
+				<table class="offinfor">
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						离线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						离线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						在线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						在线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="bd">
+				<span class="lt"><b>网关公网IP：</b>192.168.1.23</span>
+				<span class="lt"><b>设备数量：</b>0</span><br/>
+				<span class="lt"><b>网关内网IP：</b><span>192.168.1.23</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+				<span class="lt"><b>报警数量：</b><span>0</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+
+				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
+					<span class="dropdownlist" style="left:58px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span>
+
+			</div>
+		</div>
+		<div class="ls">
+			<div class="hd">
+				<img src="assets/img/setting/wifi_online.png" alt="" />
+				<b class="name">allas is device</b>
+				
+				<a class="offline" href="javascript:void(0)">离线</a>
+
+				<ul class="rglist">
+					<li><img src="assets/img/setting/all.png" alt="" />所有设备</li>
+					<li><img src="assets/img/setting/white.png" alt="" />白名单设备</li>
+					<li><img src="assets/img/setting/safe.png" alt="" />安全警示</li>
+				</ul>
+			</div>
+			<div class="rg-ls">
+				<table class="offinfor">
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						离线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						离线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sk.png" alt="" />
+						在线时刻：
+						</td>
+						<td colspan="3">
+						
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<img src="assets/img/dashboard/sc.png" alt="" />
+						在线时长：
+						</td>
+						<td colspan="3">
+						2小时20分钟
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="bd">
+				<span class="lt"><b>网关公网IP：</b>192.168.1.23</span>
+				<span class="lt"><b>设备数量：</b>0</span><br/>
+				<span class="lt"><b>网关内网IP：</b><span>192.168.1.23</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+				<span class="lt"><b>报警数量：</b><span>0</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
+					<span class="dropdownlist" style="left:82px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span><br/>
+
+				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
+					<span class="dropdownlist" style="left:58px;top:25px;display:none;">
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+						<a>192.168.1.123</a>
+					</span>
+				</span>
+
+			</div>
+		</div>
+
 	</div>
 </div>

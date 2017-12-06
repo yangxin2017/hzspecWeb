@@ -1,10 +1,19 @@
 .serv-container{
     background: #fff;border-radius:30px;padding:20px;
-    margin-top:60px;overflow:hidden;height:calc(100% - 290px);
-    overflow:auto;
+    margin-top:60px;height:calc(100% - 290px);
+    position:relative;
+    .scroll-container{
+        height: calc(100% - 180px);
+        overflow: auto;
+    }
+    .pos{
+        position:absolute;
+        top:-18px;left:16.66%;
+        margin-left:-10px;
+    }
 
     .lf{
-        float:left;border-right:solid 1px #07345E;width:50%;padding: 20px;overflow:hidden;
+        float:left;border-right:solid 1px #07345E;width:50%;padding: 20px;overflow:hidden;height:100%;
         table{
             margin-top:30px;
             td{
@@ -12,7 +21,7 @@
             }
         }
     }
-    .rg{margin-left:50%;padding: 20px;overflow:hidden;
+    .rg{margin-left:50%;padding: 20px;overflow:hidden;height:100%;
         .tl{text-align: center;font-size:16px;color:#07345E;}
     }
 

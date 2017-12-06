@@ -1,7 +1,12 @@
 .search-condition{
     border-radius: 30px;
     background: #fff;margin-top: 50px;
-    padding: 20px;
+    padding: 20px;position:relative;
+    .pos{
+        position:absolute;
+        top:-18px;left:16.66%;
+        margin-left:-10px;
+    }
     table{
         width: 100%;
         .lbl{
@@ -38,16 +43,21 @@
     border-radius: 30px;
     background: #fff;
     padding: 20px;
+    height: calc(100% - 400px);
     .tl{
         text-align: center;
         color: #053663;font-size: 18px;
     }
     .lists{
-        height: 100%;
-        overflow: hidden;
+        height: calc(100% - 18px);
+        overflow: hidden;margin:0 -20px;
+        padding:0 20px;border-radius: 20px;
         .ls{
             line-height: 100px;height: 100px;padding-top: 8px;
-            border-bottom: solid 1px #C7E2F8;
+            border-bottom: solid 1px #C7E2F8;margin:0 -20px;padding: 8px 20px 0 20px;
+            &:hover{
+                background: #EAF1F6;
+            }
             .ions{
                 float: left;width: 150px;
             }
