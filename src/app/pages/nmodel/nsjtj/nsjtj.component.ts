@@ -1,28 +1,104 @@
 import { Component, OnInit } from '@angular/core';
+import { SimpleGlobal } from 'ng2-simple-global';
+
+import { EquipService } from '../../../services/equip.service';
+import * as _ from 'lodash';
 
 import echarts from 'echarts/dist/echarts.min';
 
 @Component({
   selector: 'app-nsjtj',
   templateUrl: './nsjtj.component.html',
-  styleUrls: ['./nsjtj.component.scss']
+  styleUrls: ['./nsjtj.component.scss'],
+  providers: [EquipService]
 })
 export class NsjtjComponent implements OnInit {
 	private chmod:any;
+	public interval:string = 'WEEK';
 
-	constructor() { }
+	constructor(
+		private sg:SimpleGlobal,
+		private eserv:EquipService
+	) { }
 
 	ngOnInit() {
-		this.initChart();
+		let mac = this.sg['apMac'];
+		this.initData(mac);
 	}
 
-	private initChart(){
+	changeSel(interval){
+		this.interval = interval;
+		let mac = this.sg['apMac'];
+		this.initData(mac);
+	}
+
+	inArray(key, arr){
+		let has = false;
+		for(let k of arr){
+			if(key == k){
+				has = true;
+				break;
+			}
+		}
+		return has;
+	}
+
+	initData(mac){
+        let se = [];
+        let xz = [];
+
+        let d1 = [];
+        let d2 = [];
+        this.eserv.get2_2AlertData(mac, this.interval, res=>{
+
+            for(let val of res){
+                
+                if(val.k == 'pre'){
+                    
+                    let dat = [];
+                    val.v.forEach(ele=>{
+                        if(!this.inArray(ele.k, xz)){
+                            xz.push(ele.k);
+                        }
+                        dat.push(ele.v);
+                    });
+                    d1 = dat;
+                }else{
+                    let dat = [];
+                    val.v.forEach(ele=>{
+                        if(!this.inArray(ele.k, xz)){
+                            xz.push(ele.k);
+                        }
+                        dat.push(ele.v);
+                    });
+                    d2 = dat;
+                }
+            }
+            for(let k in xz){
+                se.push({
+                    name: xz[k],
+                    type: 'bar',
+                    data: [d1[k], d2[k]],
+                    barWidth: 20
+                });
+            }
+            let realXz = ['昨日', '本日'];
+            if(this.interval == 'WEEK'){
+                realXz = ['上周', '本周'];
+            }else if(this.interval == 'MONTH'){
+                realXz = ['上月', '本月'];
+            }
+            this.initChart(xz, se, realXz);
+        });
+	}
+
+	private initChart(xz, se, relXz){
 		let dom = document.getElementById("sjtjchart");
 	  
 		this.chmod = echarts.init(dom);
 		let option = {
 			legend: {
-				data:['电脑','移动终端','智能设备','摄像头','其他'],
+				data:xz,
 				right: 0,
 				itemWidth: 10,
 				itemHeight: 10
@@ -37,7 +113,7 @@ export class NsjtjComponent implements OnInit {
 			xAxis : [
 				{
 					type : 'category',
-					data : ['上周','本周'],
+					data : relXz,
 					axisTick: {show: false},
 					splitLine: {lineStyle: {color: '#CBE4F9'}},
 					axisLine: {lineStyle: {color: '#2084DA'}},
@@ -54,33 +130,7 @@ export class NsjtjComponent implements OnInit {
 				}
 			],
 			colors: ['#76C1F0', '#FCBD62', '#CDE640', '#EE62A4', '#781798'],
-			series : [
-				{
-					name:'电脑',
-					type:'bar',
-					data:[320, 332]
-				},
-				{
-					name:'移动终端',
-					type:'bar',
-					data:[120, 132]
-				},
-				{
-					name:'智能设备',
-					type:'bar',
-					data:[220, 182]
-				},
-				{
-					name:'摄像头',
-					type:'bar',
-					data:[150, 232]
-				},
-				{
-					name:'其他',
-					type:'bar',
-					data:[862, 1018]
-				}
-			]
+			series : se
 		};
 		this.chmod.setOption(option);
 	}

@@ -2,7 +2,7 @@
   <div class="hd">
     <span class="tl">报警类别统计</span>
     <div class="lengs">
-      <select class="selects">
+      <select class="selects" (change)="changeSel(sel.value)" #sel>
         <option value="WEEK">周</option>
         <option value="DAY">日</option>
         <option value="MONTH">月</option>

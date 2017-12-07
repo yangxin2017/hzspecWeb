@@ -1,22 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { SimpleGlobal } from 'ng2-simple-global';
+
+import { EquipService } from '../../../services/equip.service';
 
 import echarts from 'echarts/dist/echarts.min';
 
 @Component({
   selector: 'app-nlbtj',
   templateUrl: './nlbtj.component.html',
-  styleUrls: ['./nlbtj.component.scss']
+  styleUrls: ['./nlbtj.component.scss'],
+  providers: [EquipService]
 })
 export class NlbtjComponent implements OnInit {
 	private chmod:any;
 
-	constructor() { }
+	constructor(
+		private sg:SimpleGlobal,
+		private dserv:EquipService
+	) { }
 
 	ngOnInit() {
-		this.initChart();
+		let apmac = this.sg['apMac'];
+		this.dserv.getCategoryByAp(apmac, res=>{
+			let datas = [];
+            res.forEach(ele=>{
+                datas.push({
+                    name: ele.sigName,
+                    value: ele.amount
+                })
+            });
+            this.initChart(datas);
+        });
 	}
 
-	private initChart(){
+	private initChart(datas){
+		let lengs = [];
+        datas.forEach((ele)=>{
+            lengs.push(ele.name);
+        });
+
 		let dom = document.getElementById("lbtjchart");
 	  
 		this.chmod = echarts.init(dom);
@@ -29,7 +51,7 @@ export class NlbtjComponent implements OnInit {
 				itemWidth: 7,
 				itemHeight: 7,
 				borderRadius: 7,
-				data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+				data: lengs
 			},
 			series: [
 				{
@@ -55,13 +77,7 @@ export class NlbtjComponent implements OnInit {
 							show: false
 						}
 					},
-					data:[
-						{value:335, name:'直接访问'},
-						{value:310, name:'邮件营销'},
-						{value:234, name:'联盟广告'},
-						{value:135, name:'视频广告'},
-						{value:1548, name:'搜索引擎'}
-					]
+					data: datas
 				}
 			]
 		};

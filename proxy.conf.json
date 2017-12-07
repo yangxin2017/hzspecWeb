@@ -1,0 +1,27 @@
+{
+	"/squirrel":{
+		"target": "http://60.205.212.99/"
+	},
+	"/usercenter":{
+		"target": "http://60.205.212.99/"
+	},
+	"/ext/":{
+		"target": "http://60.205.212.99/"
+	},
+	"/alert/":{
+		"target": "http://60.205.212.99/"
+	},
+	"/dolphin/":{
+		"target": "http://60.205.212.99/"
+	},
+	"/gateway/":{
+		"target":  {
+			"host": "www.hzspec.com",
+			"protocol": "https:",
+			"port": 443
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "info"
+	}
+}

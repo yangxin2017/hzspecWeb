@@ -7,57 +7,47 @@
   <h3 class="title">网关信息</h3>
 
   <div class="infor-content">
-    <span class="name">f4:8c:50:0b:05:15</span><br/>
+    <span class="name">{{routerInfor.alias}}[{{routerInfor.mac}}]</span><br/>
 
     <table class="base-infor">
       <tr>
         <td>网关公网IP：</td>
-        <td>124.127.209.55</td>
+        <td>{{routerInfor.wip}}</td>
         <td class="pl-30">设备数量：</td>
-        <td>2</td>
+        <td>{{routerInfor.devcount}}</td>
       </tr>
       <tr>
         <td>网关内网IP：</td>
-        <td>124.127.209.55</td>
+        <td>{{routerInfor.nip}}</td>
         <td class="pl-30">报警数量：</td>
-        <td>2</td>
+        <td>{{routerInfor.alertcount}}</td>
       </tr>
       <tr>
         <td>应用流量排名TOP10：</td>
         <td colspan="3" class="relpos">
-          <img class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
-          <div class="dropdownlist" style="display:none;">
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
+          <img (click)="getLLList(routerInfor.mac);yydv.style.display='block';yyinp.focus();" class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
+          <input #yyinp type="text" (blur)="yydv.style.display='none';sbdv.style.display='none';portdv.style.display='none';" style="opacity:0;" value="" />
+          <div #yydv class="dropdownlist" style="display:none;">
+            <a *ngFor="let ll of routerInfor.yytop10">{{ll.key}}({{ll.value}}GB)</a>
           </div>
         </td>
       </tr>
       <tr>
         <td>设备流量排名TOP10：</td>
         <td colspan="3" class="relpos">
-          <img class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
-          <div class="dropdownlist" style="display:none;">
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
+          <img (click)="getLLList(routerInfor.mac);sbdv.style.display='block';yyinp.focus();" class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
+          <div #sbdv class="dropdownlist" style="display:none;">
+            <a *ngFor="let ll of routerInfor.sbtop10">{{ll.key}}({{ll.value}}GB)</a>
           </div>
         </td>
       </tr>
       <tr>
         <td>外部端口：</td>
         <td colspan="3" class="relpos">
-          <img class="cur-pointer" src="assets/img/dashboard/dot.png" alt="" />
-          <div class="dropdownlist" style="display:none;">
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
-            <a>192.168.1.123</a>
+          <span *ngIf="routerInfor.ports.length == 0">无</span>
+          <img *ngIf="routerInfor.ports.length > 0" (click)="portdv.style.display='block';yyinp.focus();" class="cur-pointer" src="assets/img/dashboard/dot.png" alt="" />
+          <div #portdv class="dropdownlist" style="display:none;">
+            <a *ngFor="let p of routerInfor.ports">{{p}}</a>
           </div>
         </td>
       </tr>

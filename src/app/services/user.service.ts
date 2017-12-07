@@ -9,7 +9,8 @@ export class UserService {
     ){}
 
     public UserLogin(config, callback){
-        this.rest.all("gateway").customPOST(undefined, "usercenter/usercenter/v1/users/login", {userId: config.email, password: config.password}).subscribe(res=>{
+        var param = {userId: config.email, password: config.password}
+        this.rest.all("usercenter").customPOST(undefined, "v1/users/login", param).subscribe(res=>{
             callback(res);
         }, (res)=>{
             callback('error');

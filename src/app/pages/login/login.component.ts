@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { EquipService } from '../../services/equip.service';
 
 import { SimpleGlobal } from 'ng2-simple-global';
 
@@ -13,7 +14,7 @@ declare var particlesJS:any;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [UserService]
+  providers: [UserService, EquipService]
 })
 export class LoginComponent implements OnInit {
   public router: Router;
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
     router:Router, 
     fb:FormBuilder, 
     public serv:UserService, 
+    public eserv:EquipService,
     private sg:SimpleGlobal
   ) { 
     this.router = router;
@@ -175,8 +177,15 @@ export class LoginComponent implements OnInit {
 
                   if(values.email == 'admin@hzspec-unicorn.com')
                       this.router.navigate(['/pages/admindash/']);
-                  else
-                      this.router.navigate(['/pages/']);
+                  else{
+                      this.eserv.getAllRouter(values.email, res=>{
+                          let apmac = res.apMacAddr;
+                          document.cookie = 'apMac=' + apmac + ';expires=' + exp.toUTCString();
+
+                          this.router.navigate(['/dashboard/']);
+                      });
+                  }
+                      
               }
           });
       }
