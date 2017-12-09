@@ -55,4 +55,31 @@ export class EquipService {
 			console.log("Internal Server Error!");
 		});
     }
+
+	public getEquipCount(apMac:string, callback){
+        this.rest.all("squirrel").customGET("v1/devices/overview?apMacAddress=" + apMac).subscribe(res=>{
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+    }
+
+	public getTwoweekAlert(mac:string, callback){
+        let param = {
+            apMacAddr: mac
+        };
+        this.rest.all("alert").customPOST(null, "v1/alerts/device/2week/total?apMacAddr=" + mac).subscribe(res=>{
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+    }
+
+	public getNetCount(mac:string, callback){
+        this.rest.all("dolphin").customGET("v1/packet_summarys/total1?macAddr=" + mac).subscribe(res=>{
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+    }
 } 

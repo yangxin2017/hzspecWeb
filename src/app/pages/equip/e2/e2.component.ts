@@ -1,24 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 
 import echarts from 'echarts/dist/echarts.min';
+import { SimpleGlobal } from 'ng2-simple-global';
+import { EquipService } from '../../../services/equip.service';
 
 @Component({
   selector: 'app-e2',
   templateUrl: './e2.component.html',
-  styleUrls: ['./e2.component.scss']
+  styleUrls: ['./e2.component.scss'],
+  providers: [EquipService]
 })
 export class E2Component implements OnInit {
 	private chmod:any;
 
-	constructor() { }
+	public netInfor = {
+        dr: [0, 'KB'],
+        qr: [0, 'KB'],
+        sz: [0, 'KB'],
+        sy: [0, 'KB']
+    };
+
+	constructor(
+		private eserv:EquipService,
+		private sg:SimpleGlobal
+	) { }
 
 	ngOnInit() {
-		this.initChart();
+		this.initData();
+	}
+
+	getllNumber(num){
+        let dw = 'B';
+        if(num / 1024 > 1){
+            dw = 'KB';
+            num = num / 1024;
+            if(num / 1024 > 1){
+                dw = 'MB';
+                num = num / 1024;
+                if(num / 1024 > 1){
+                    dw = 'GB';
+                    num = num / 1024;
+                }
+            }
+        }
+        num = num.toFixed(2);
+        return [num, dw];
+    }
+
+	initData(){
+		let apmac = this.sg['apMac'];
+
+		this.eserv.getNetCount(apmac, res=>{
+            if(res.length >= 2){
+                let d1 = res[0].value;
+                let d7 = res[1].value;
+
+                this.netInfor.dr = this.getllNumber(d1);
+                this.netInfor.qr = this.getllNumber(d7);
+
+				this.initChart();
+            }
+        });
 	}
 
 	private initChart(){
-		var value = [100, 55];
-		var dw = 'B';
+		var value = [this.netInfor.dr[0], this.netInfor.qr[0]];
+		var dw = this.netInfor.dr[1];
 
 		let c11 = 'rgba(166, 217, 10, 1)';
 		let c1 = new echarts.graphic.LinearGradient(
@@ -101,7 +148,12 @@ export class E2Component implements OnInit {
 							label: {
 								show: true,
 								position: 'insideTop',
-								formatter: '{c}' + dw,
+								formatter: (param, t, c)=>{
+									if(param.value == 0){
+										return '';
+									}
+									return param.value + dw;
+								},
 								color: '#AFC6DA',
 								fontSize: 40
 							}

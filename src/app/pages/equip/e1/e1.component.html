@@ -1,15 +1,18 @@
 <div class="e1">
-	<span class="wifi"><img src="assets/img/dashboard/Wifi.png" alt="" /></span>
+	<span class="wifi">
+		<img *ngIf="RouterStatus.online==0" src="assets/img/dashboard/Wifi.png" alt="" />
+		<img *ngIf="RouterStatus.online==1" src="assets/img/dashboard/Wifi_on.png" alt="" />
+	</span>
 	<div class="lf-con">
 		<span class="tl">网关状态</span>
 		<p class="real-data">
-			<b>125</b>K/S
+			<b>{{currentLLNumber}}</b>K/S
 		</p>
 	</div>
 	<div class="rg-con">
 		<p>
-			离线时长：1239小时15分钟<br/>
-			离线时刻：2017年01月19日 23时23分45秒
+			离线时长：{{RouterStatus.offlineSpan}}小时{{RouterStatus.offlineMinute}}分钟<br/>
+			离线时刻：{{RouterStatus.offTime}}
 		</p>
 	</div>
 </div>

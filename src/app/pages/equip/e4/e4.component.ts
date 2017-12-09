@@ -1,23 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import echarts from 'echarts/dist/echarts.min';
+import { EquipService } from '../../../services/equip.service';
 
 @Component({
   selector: 'app-e4',
   templateUrl: './e4.component.html',
-  styleUrls: ['./e4.component.scss']
+  styleUrls: ['./e4.component.scss'],
+  providers: [EquipService]
 })
 export class E4Component implements OnInit {
 	private chmod:any;
+	public interval:string = 'WEEK';
 
-	constructor() { }
+	public alertCounts = {
+        sz: 0,
+        bz: 0
+    };
+
+	constructor(
+		private eserv:EquipService,
+		private sg:SimpleGlobal
+	) { }
 
 	ngOnInit() {
+		let apmac = this.sg['apMac'];
+		this.eserv.getTwoweekAlert(apmac, res=>{
+            if(res.length == 2){
+                if(res[0].k == 'pre'){
+                    this.alertCounts.sz = res[0].v;
+                    this.alertCounts.bz = res[1].v;
+                }
+                if(res[0].k == 'cur'){
+                    this.alertCounts.bz = res[0].v;
+                    this.alertCounts.sz = res[1].v;
+                }
+            }
+        });
 		this.initChart();
 	}
 
 	private initChart(){
-		var value = [100, 55];
+		var value = [this.alertCounts.sz, this.alertCounts.bz];
 		var dw = '';
 
 		let c11 = 'rgba(166, 217, 10, 1)';
@@ -67,7 +92,7 @@ export class E4Component implements OnInit {
 					axisTick:  {show:false},
 					splitLine:  {lineStyle: {color: '#7DAFDB'}, show:true},
 					axisLine: {lineStyle: {color: '#7DAFDB'}},
-					data: ['上周', '本周']
+					data: value
 				}
 			],
 			yAxis: [
@@ -101,7 +126,12 @@ export class E4Component implements OnInit {
 							label: {
 								show: true,
 								position: 'insideTop',
-								formatter: '{c}' + dw,
+								formatter: (param, t, c)=>{
+									if(param.value == 0){
+										return '';
+									}
+									return param.value + dw;
+								},
 								color: '#AFC6DA',
 								fontSize: 40
 							}

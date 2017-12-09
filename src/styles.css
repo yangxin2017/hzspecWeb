@@ -83,7 +83,7 @@ html,body{width:100%;height:100%;}
 .chart-box .hd .lengs .lg .xx{color:#189408;font-size: 12px;}
 .chart-box .hd .lengs .lg .sx{color:#2687DB;font-size: 12px;}
 .chart-box .bd{height: calc(100% - 35px);}
-.chart-box .chart-canvas{height: 100%;background: #f00;margin-top: 14px;}
+.chart-box .chart-canvas{height: 100%;margin-top: 14px;background: #eee;line-height:100%;position:relative;}
 
 .iosCheck {
 /* Blue edition */

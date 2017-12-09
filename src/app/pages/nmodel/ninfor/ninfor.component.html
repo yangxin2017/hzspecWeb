@@ -1,7 +1,8 @@
 <div class="infor-container">
-  <p class="onffline on">
-    <img src="assets/img/dashboard/Wifi_on.png" alt="" />
-    离线
+  <p class="onffline" [class.on]="RouterStatus.online==1">
+    <img *ngIf="RouterStatus.online==1" src="assets/img/dashboard/Wifi_on.png" alt="" />
+    <img *ngIf="RouterStatus.online==0" src="assets/img/dashboard/Wifi.png" alt="" />
+    {{RouterStatus.online==1 ? '在线' : '离线'}}
   </p>
 
   <h3 class="title">网关信息</h3>
@@ -60,7 +61,8 @@
           离线时刻：
         </td>
         <td colspan="3">
-          
+          <div *ngIf="RouterStatus.online==0">{{RouterStatus.offTime}}</div>
+          <div *ngIf="RouterStatus.online==1">--</div>
         </td>
       </tr>
       <tr>
@@ -69,7 +71,8 @@
           离线时长：
         </td>
         <td colspan="3">
-          2小时20分钟
+          <div *ngIf="RouterStatus.online==0">{{RouterStatus.offlineSpan}}小时{{RouterStatus.offlineMinute}}分钟</div>
+          <div *ngIf="RouterStatus.online==1">--</div>
         </td>
       </tr>
       <tr>
@@ -78,7 +81,8 @@
           在线时刻：
         </td>
         <td colspan="3">
-          
+          <div *ngIf="RouterStatus.online==1">{{RouterStatus.offTime}}</div>
+          <div *ngIf="RouterStatus.online==0">--</div>
         </td>
       </tr>
       <tr>
@@ -87,7 +91,8 @@
           在线时长：
         </td>
         <td colspan="3">
-          2小时20分钟
+          <div *ngIf="RouterStatus.online==1">{{RouterStatus.offlineSpan}}小时{{RouterStatus.offlineMinute}}分钟</div>
+          <div *ngIf="RouterStatus.online==0">--</div>
         </td>
       </tr>
     </table>
