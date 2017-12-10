@@ -82,4 +82,19 @@ export class EquipService {
 			console.log("Internal Server Error!");
 		});
     }
+
+	public getAllByMac(config, callback){
+		this.rest.all("ext").customGET("v1/devices", config).subscribe(res=>{
+			console.log(res);
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+	}
+
+	public authDevice(devid:string, authtype:string, callback){
+		this.rest.all("squirrel").customPOST({id: devid, status: authtype}, "v1/devices/add_device_authority").subscribe(res=>{
+			callback(res);
+		})
+	}
 } 

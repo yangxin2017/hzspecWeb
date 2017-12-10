@@ -1,40 +1,32 @@
 <div class="infors">
 	<div class="title">已授权设备列表</div>
 	<div class="lists relpos" id="equipScroll">
-		<div class="ls">
+		<div class="ls" *ngFor="let equ of data">
 			<div class="hd">
-				<img src="assets/img/equip/video_white.png" alt="" />
-				<b class="name">allas is device</b>
-				<a href="javascript:void(0)" class="fr white">白名单</a>
-				<a href="javascript:void(0)" class="xssy">限时使用</a>
-				<a href="javascript:void(0)" class="lssq">临时授权</a>
-				<a href="javascript:void(0)" class="black">黑名单</a>
-				<span class="time">3个月前</span>
+				<img src="assets/img/equip/{{equ.ename}}{{equ.status_str}}.png" alt="" />
+				<b class="name">{{equ.alias ? equ.alias : equ.deviceMacAddr}}</b>
+				<a href="javascript:void(0)" (click)="authDev(equ.id, '20')" [class.sel]="equ.status=='20'" class="fr white">白名单</a>
+				<a href="javascript:void(0)" (click)="authDev(equ.id, '40')" [class.sel]="equ.status=='40'" class="xssy">限时使用</a>
+				<a href="javascript:void(0)" (click)="authDev(equ.id, '9-17')" [class.sel]="equ.status=='9-17'" class="lssq">临时授权</a>
+				<a href="javascript:void(0)" (click)="authDev(equ.id, '30')" [class.sel]="equ.status=='30'" class="black">黑名单</a>
+				<span class="time">{{equ.timeAdded}}</span>
 			</div>
 			<div class="bd">
-				<span class="lt"><b>IP地址：</b>192.168.1.23</span>
-				<span class="lt"><b>设备供应商：</b>Apple</span><br/>
-				<span class="lt"><b>在线状态：</b><span>离线</span></span>
-				<span class="lt"><b>设备类型：</b>摄像头</span><br/>
-				<span class="lt"><b>MAC地址：</b><span>AB:CD:AC:AA:CC</span></span>
-				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
-					<span class="dropdownlist" style="display:none;">
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
+				<span class="lt"><b>IP地址：</b>{{equ.ip}}</span>
+				<span class="lt"><b>设备供应商：</b>{{equ.vendor}}</span><br/>
+				<span class="lt"><b>在线状态：</b><span>--</span></span>
+				<span class="lt"><b>设备类型：</b>{{equ.tname}}</span><br/>
+				<span class="lt"><b>MAC地址：</b><span>{{equ.deviceMacAddr}}</span></span>
+				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" (click)="getEquLL(equ, $event);dvls.style.display='block';" src="assets/img/equip/sj.png" alt="" />
+					<span #dvls class="dropdownlist dvls-panel" style="display:none;">
+						<a *ngFor="let ll of equ.list">{{ll.key}}({{ll.value}}GB)</a>
 					</span>
 				</span><br/>
 
-				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
-					<span class="dropdownlist" style="left:59px;top:25px;display:none;">
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-					</span>
+				<span class="lt relpos"><b>外部端口：</b>
+					<span *ngFor="let p of equ.deviceServices_short;" class="p">{{p.port}}</span>
+					<img class="ddd" (click)="getEquipServ(equ.deviceMacAddr)" src="assets/img/equip/ddd.png" alt="" />
+					
 				</span>
 
 				<p class="rg-ls">
@@ -44,90 +36,32 @@
 			</div>
 		</div>
 
-		<div class="ls">
-			<div class="hd">
-				<img src="assets/img/equip/video_white.png" alt="" />
-				<b class="name">allas is device</b>
-				<a href="javascript:void(0)" class="fr white">白名单</a>
-				<a href="javascript:void(0)" class="xssy">限时使用</a>
-				<a href="javascript:void(0)" class="lssq">临时授权</a>
-				<a href="javascript:void(0)" class="black">黑名单</a>
-				<span class="time">3个月前</span>
-			</div>
-			<div class="bd">
-				<span class="lt"><b>IP地址：</b>192.168.1.23</span>
-				<span class="lt"><b>设备供应商：</b>Apple</span><br/>
-				<span class="lt"><b>在线状态：</b><span>离线</span></span>
-				<span class="lt"><b>设备类型：</b>摄像头</span><br/>
-				<span class="lt"><b>MAC地址：</b><span>AB:CD:AC:AA:CC</span></span>
-				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
-					<span class="dropdownlist" style="display:none;">
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-					</span>
-				</span><br/>
+	</div>
+</div>
 
-				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
-					<span class="dropdownlist" style="left:59px;top:25px;display:none;">
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-					</span>
-				</span>
-
-				<p class="rg-ls">
-					<a href="javascript:void(0)"><img src="assets/img/equip/safe.png" alt="" />安全警示</a>
-					<a href="javascript:void(0)"><img src="assets/img/equip/ls.png" alt="" />报警列表</a>
-				</p>
+<div class="dialog" id="outService">
+	<div class="hd">
+		<span class="title">外部端口</span>
+		<img class="close" (click)="hideDialog()" src="assets/img/close.png" alt="" />
+	</div>
+	<div class="condition">
+		<a (click)="filterServices(p.deviceMacAddr)" class="br-ip" [class.sel]="p.deviceMacAddr==deviceId" *ngFor="let p of titles">{{p.ip ? p.ip : '暂无IP'}}</a>
+	</div>
+	<div class="bd">
+		<div class="bd-lists" id="serviceScroll">
+			<div class="d-ls" *ngFor="let ss of listEquipServices">
+				<div class="img">
+					<img src="assets/img/dashboard/Wifi_on.png" alt="" />
+				</div>
+				<div class="cons">
+					<span class="tt">{{ss.service}} <b class="c-status" [class.red]="ss.status=='open'">{{ss.status=='open' ? '打开' : '关闭'}}</b></span><br/>
+					<div class="dinfo">
+						<span><b>ip地址：</b>{{ss.ip}}</span><span><b>通讯协议：</b>{{ss.protocol}}</span><span><b>端口：</b>{{ss.port}}</span><br/>
+						<span><b>路由mac地址：</b>{{ss.apMacAddr}}</span><span><b>设备Mac地址：</b>{{ss.deviceMacAddr}}</span>
+					</div>
+				</div>
 			</div>
-		</div>
-		
-		<div class="ls">
-			<div class="hd">
-				<img src="assets/img/equip/video_white.png" alt="" />
-				<b class="name">allas is device</b>
-				<a href="javascript:void(0)" class="fr white">白名单</a>
-				<a href="javascript:void(0)" class="xssy">限时使用</a>
-				<a href="javascript:void(0)" class="lssq">临时授权</a>
-				<a href="javascript:void(0)" class="black">黑名单</a>
-				<span class="time">3个月前</span>
-			</div>
-			<div class="bd">
-				<span class="lt"><b>IP地址：</b>192.168.1.23</span>
-				<span class="lt"><b>设备供应商：</b>Apple</span><br/>
-				<span class="lt"><b>在线状态：</b><span>离线</span></span>
-				<span class="lt"><b>设备类型：</b>摄像头</span><br/>
-				<span class="lt"><b>MAC地址：</b><span>AB:CD:AC:AA:CC</span></span>
-				<span class="lt relpos"><b>应用流量排名：</b><img class="sj" src="assets/img/equip/sj.png" alt="" />
-					<span class="dropdownlist" style="display:none;">
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-					</span>
-				</span><br/>
 
-				<span class="lt relpos"><b>外部端口：</b><span class="p">22</span><span class="p">25</span><span class="p">25</span><img class="ddd" src="assets/img/equip/ddd.png" alt="" />
-					<span class="dropdownlist" style="left:59px;top:25px;display:none;">
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-						<a>192.168.1.123</a>
-					</span>
-				</span>
-
-				<p class="rg-ls">
-					<a href="javascript:void(0)"><img src="assets/img/equip/safe.png" alt="" />安全警示</a>
-					<a href="javascript:void(0)"><img src="assets/img/equip/ls.png" alt="" />报警列表</a>
-				</p>
-			</div>
 		</div>
 	</div>
 </div>
