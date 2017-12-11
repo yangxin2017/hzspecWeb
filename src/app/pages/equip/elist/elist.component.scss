@@ -149,3 +149,29 @@
         color:#fff;
     }
 }
+
+.safe-con{
+    height:337px;
+}
+.d-buts{
+    text-align:right;
+}
+
+#alerthistory{
+    width: 1000px;height: 700px;margin:-350px 0 0 -500px;
+    .history-con{
+        height: 250px;background:#f00;
+    }
+    .histables{
+        height:230px;overflow:auto;position:relative;
+        table th{border:solid 1px #ccc;line-height:30px;}
+        table td{border:solid 1px #ddd;line-height:30px;text-align:center;}
+    }
+    .card-title{
+        line-height:33px;background:#D7E5F1;padding:0 0 0 15px;font-size:14px;
+    }
+    .rg-radio{
+        float:right;margin-top:8px;
+        .radio-check{float:left;width:80px;}
+    }
+}

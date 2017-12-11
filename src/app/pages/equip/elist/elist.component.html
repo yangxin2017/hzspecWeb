@@ -33,8 +33,8 @@
 				</span>
 
 				<p class="rg-ls">
-					<a href="javascript:void(0)"><img src="assets/img/equip/safe.png" alt="" />安全警示</a>
-					<a href="javascript:void(0)"><img src="assets/img/equip/ls.png" alt="" />报警列表</a>
+					<a href="javascript:void(0)" (click)="showsafedialog()"><img src="assets/img/equip/safe.png" alt="" />安全警示</a>
+					<a href="javascript:void(0)" (click)="showhistorydialog()"><img src="assets/img/equip/ls.png" alt="" />报警列表</a>
 				</p>
 			</div>
 		</div>
@@ -82,6 +82,121 @@
 		<div class="d-buts">
 		<input type="button" class="but but-cancle" (click)="hideEquipDialog()" value="取消" />
 		<input type="button" class="but btn-confirm" (click)="confirmEquipName(inp.value)" value="确定" />
+		</div>
+	</div>
+</div>
+
+
+<div class="dialog animated" id="safeJS" [class.flipInX]="isShowDialogSafe" [class.flipOutX]="!isShowDialogSafe">
+	<div class="hd">
+		<span class="title">安全警示</span>
+		<img class="close" (click)="hideSafeDialog()" src="assets/img/close.png" alt="" />
+	</div>
+	<div class="bd">
+		<div class="d-con">
+			<div class="safe-con" id="safeTipChart">
+			</div>
+		</div>
+		<div class="d-buts">
+			<input type="button" class="but but-cancle" (click)="hideSafeDialog()" value="关闭" />
+		</div>
+	</div>
+</div>
+
+
+<div class="dialog animated" id="alerthistory" [class.flipInX]="isShowDialoghistory" [class.flipOutX]="!isShowDialoghistory">
+	<div class="hd">
+		<span class="title">报警历史</span>
+		<img class="close" (click)="hidehistoryDialog()" src="assets/img/close.png" alt="" />
+	</div>
+	<div class="bd">
+		<div class="d-con">
+			<div class="card-title">
+				报警统计分析
+				<div class="rg-radio">
+					<div (click)="getDataByType('10fen')" class="radio-check"> 
+						<input checked="checked" id="rdm1" name="minutes" type="radio"> 
+						<label class="" for="rdm1">10分钟</label>
+					</div>
+					<div (click)="getDataByType('30fen')" class="radio-check"> 
+						<input id="rdm2" name="minutes" type="radio"> 
+						<label class="" for="rdm2">30分钟</label>
+					</div>
+					<div (click)="getDataByType('1shi')" class="radio-check"> 
+						<input id="rdm3" name="minutes" type="radio"> 
+						<label class="" for="rdm3">1小时</label>
+					</div>
+					<div (click)="getDataByType('1tian')" class="radio-check"> 
+						<input id="rdm4" name="minutes" type="radio"> 
+						<label class="" for="rdm4">1天</label>
+					</div>
+					<div (click)="getDataByType('7tian')" class="radio-check"> 
+						<input id="rdm5" name="minutes" type="radio"> 
+						<label class="" for="rdm5">1周</label>
+					</div>
+					<div (click)="getDataByType('1yue')" class="radio-check"> 
+						<input id="rdm6" name="minutes" type="radio"> 
+						<label class="" for="rdm6">1月</label>
+					</div>
+					<div (click)="getDataByType('3yue')" class="radio-check"> 
+						<input id="rdm7" name="minutes" type="radio"> 
+						<label class="" for="rdm7">1季度</label>
+					</div>
+					<div (click)="getDataByType('6yue')" class="radio-check"> 
+						<input id="rdm8" name="minutes" type="radio"> 
+						<label class="" for="rdm8">半年</label>
+					</div>
+					<div (click)="getDataByType('1nian')" class="radio-check"> 
+						<input id="rdm9" name="minutes" type="radio"> 
+						<label class="" for="rdm9">1年</label>
+					</div>
+
+				</div>
+			</div>
+			<div class="history-con" id="chart_history">
+			</div>
+			<div class="card-title">
+				报警历史
+			</div>
+			<div class="histables" id="packtsScroll">
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th>协议</th>
+							<th>来源Mac</th>
+							<th>来源IP</th>
+							<th>来源端口</th>
+							<th>目标Mac</th>
+							<th>目标IP</th>
+							<th>目标端口</th>
+							<th>包大小</th>
+							<th>走势曲线</th>
+							<th>间隔</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let p of pdatas,let i=index">
+							<td>{{p.protocol}}</td>
+							<td>{{p.sourceMac}}</td>
+							<td>{{p.sourceHost}}</td>
+							<td>{{p.port}}</td>
+							<td>{{p.dstMac}}</td>
+							<td>{{p.dstHost}}</td>
+							<td>{{p.dstPort}}</td>
+							<td>{{p.packetSize}}</td>
+							<td>
+								<p class="chk-chart-con">
+									
+								</p>
+							</td>
+							<td>{{p.delta}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="d-buts">
+			<input type="button" class="but but-cancle" (click)="hidehistoryDialog()" value="关闭" />
 		</div>
 	</div>
 </div>

@@ -149,4 +149,40 @@ export class EquipService {
 			callback(res);
 		});
 	}
+
+	public getAll(config, callback){
+		var ncf = {};
+		for(let key in config){
+			if(config[key] != ""){
+				ncf[key] = config[key];
+			}
+		}
+		this.rest.all("alert").customGET("v1/alerts", ncf).subscribe(res=>{
+			callback(res);
+			console.log(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+	}
+	public getAllForPacks(config, callback){
+		var ncf = {};
+		for(let key in config){
+			if(config[key] != "" && config[key]){
+				ncf[key] = config[key];
+			}
+		}
+		this.rest.all("dolphin").customGET("/v1/packet_summarys", ncf).subscribe(res=>{
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+	}
+
+	public getCategory(callback){
+		this.rest.all("alert").customGET("v1/alerts/statistics").subscribe(res=>{
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+	}
 } 
