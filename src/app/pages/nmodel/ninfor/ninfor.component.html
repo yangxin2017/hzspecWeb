@@ -8,7 +8,7 @@
   <h3 class="title">网关信息</h3>
 
   <div class="infor-content">
-    <span class="name">{{routerInfor.alias}}[{{routerInfor.mac}}]</span><br/>
+    <span class="name" (click)="showDialog()">{{routerInfor.alias}}[{{routerInfor.mac}}]</span><br/>
 
     <table class="base-infor">
       <tr>
@@ -26,9 +26,8 @@
       <tr>
         <td>应用流量排名TOP10：</td>
         <td colspan="3" class="relpos">
-          <img (click)="getLLList(routerInfor.mac);yydv.style.display='block';yyinp.focus();" class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
-          <input #yyinp type="text" (blur)="yydv.style.display='none';sbdv.style.display='none';portdv.style.display='none';" style="opacity:0;" value="" />
-          <div #yydv class="dropdownlist" style="display:none;">
+          <img (click)="getLLList(routerInfor.mac);yydv.style.display='block';$event.stopPropagation();" class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
+          <div #yydv class="dropdownlist dvls-panel" style="display:none;">
             <a *ngFor="let ll of routerInfor.yytop10">{{ll.key}}({{ll.value}}GB)</a>
           </div>
         </td>
@@ -36,8 +35,8 @@
       <tr>
         <td>设备流量排名TOP10：</td>
         <td colspan="3" class="relpos">
-          <img (click)="getLLList(routerInfor.mac);sbdv.style.display='block';yyinp.focus();" class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
-          <div #sbdv class="dropdownlist" style="display:none;">
+          <img (click)="getLLList(routerInfor.mac);sbdv.style.display='block';$event.stopPropagation();" class="cur-pointer" src="assets/img/dashboard/sj.png" alt="" />
+          <div #sbdv class="dropdownlist dvls-panel" style="display:none;">
             <a *ngFor="let ll of routerInfor.sbtop10">{{ll.key}}({{ll.value}}GB)</a>
           </div>
         </td>
@@ -46,7 +45,7 @@
         <td>外部端口：</td>
         <td colspan="3" class="relpos">
           <span *ngIf="routerInfor.ports.length == 0">无</span>
-          <img *ngIf="routerInfor.ports.length > 0" (click)="portdv.style.display='block';yyinp.focus();" class="cur-pointer" src="assets/img/dashboard/dot.png" alt="" />
+          <img *ngIf="routerInfor.ports.length > 0" (click)="portdv.style.display='block';$event.stopPropagation();" class="cur-pointer" src="assets/img/dashboard/dot.png" alt="" />
           <div #portdv class="dropdownlist" style="display:none;">
             <a *ngFor="let p of routerInfor.ports">{{p}}</a>
           </div>
@@ -61,7 +60,7 @@
           离线时刻：
         </td>
         <td colspan="3">
-          <div *ngIf="RouterStatus.online==0">{{RouterStatus.offTime}}</div>
+          <div *ngIf="RouterStatus.online==0">{{RouterStatus.offTime | date: 'y年M月d日 H时m分s秒'}}</div>
           <div *ngIf="RouterStatus.online==1">--</div>
         </td>
       </tr>
@@ -81,7 +80,7 @@
           在线时刻：
         </td>
         <td colspan="3">
-          <div *ngIf="RouterStatus.online==1">{{RouterStatus.offTime}}</div>
+          <div *ngIf="RouterStatus.online==1">{{RouterStatus.offTime | date: 'y年M月d日 H时m分s秒'}}</div>
           <div *ngIf="RouterStatus.online==0">--</div>
         </td>
       </tr>
@@ -107,4 +106,20 @@
     </ul>
   </div>
 
+</div>
+
+<div class="dialog animated" id="modifyRouterName" [class.flipInX]="isShowDialog" [class.flipOutX]="!isShowDialog">
+  <div class="hd">
+    <span class="title">修改路由别名</span>
+    <img class="close" (click)="hideDialog()" src="assets/img/close.png" alt="" />
+  </div>
+  <div class="bd">
+    <div class="d-con">
+      <input #inp class="inp-txt" type="text" [value]="routerInfor.alias" />
+    </div>
+    <div class="d-buts">
+      <input type="button" class="but but-cancle" (click)="hideDialog()" value="取消" />
+      <input type="button" class="but btn-confirm" (click)="confirmEquipName(inp.value)" value="确定" />
+    </div>
+  </div>
 </div>

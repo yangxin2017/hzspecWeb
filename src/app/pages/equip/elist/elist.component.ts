@@ -71,7 +71,8 @@ export class ElistComponent implements OnInit {
 
       });
 
-      this.allEquips = res.result
+      this.allEquips = res.result;
+      this.initCount();
 
       if(this.pageType == 'yes'){
         this.data = _.filter(res.result, (d)=>{
@@ -84,7 +85,35 @@ export class ElistComponent implements OnInit {
       }
 
     });
+  }
 
+  changeType(tp){
+    this.pageType = tp;
+    if(this.pageType == 'yes'){
+      this.data = _.filter(this.allEquips, (d)=>{
+        return d.status != '10';
+      });
+    }else{
+      this.data = _.filter(this.allEquips, (d)=>{
+        return d.status == '10';
+      });
+    }
+  }
+
+  public allCount:number = 0;
+  public blackCount:number = 0;
+  public okCount:number = 0;
+  public readyCount:number = 0;
+  initCount(){
+    this.allCount = this.allEquips.length;
+
+    let okrev = _.filter(this.allEquips, (d)=>{return d.status != '10';});
+    let readrev = _.filter(this.allEquips, (d)=>{return d.status == '10';});
+    let blackrev = _.filter(this.allEquips, (d)=>{return d.status == '30';});
+
+    this.blackCount = blackrev.length;
+    this.okCount = okrev.length - this.blackCount;
+    this.readyCount = readrev.length;
   }
 
   ngOnInit() {
@@ -108,6 +137,7 @@ export class ElistComponent implements OnInit {
   getEquLL(equ, event){
     event.stopPropagation();
     if(!equ.list || equ.list.length == 0){
+      document.body.style.cursor = 'wait';
       let mac = equ.deviceMacAddr;
 
       this.eserv.GetEquLLTop10(mac, res=>{
@@ -115,6 +145,7 @@ export class ElistComponent implements OnInit {
           return {key: d.key, value: (d.value / 1000 / 1000).toFixed(2)};
         });
         equ.list = result;
+        document.body.style.cursor = 'auto';
         /*let tdata = _.map(this.data, (d:any)=>{
           if(d.deviceMacAddr == mac){
             return equ;
@@ -132,8 +163,10 @@ export class ElistComponent implements OnInit {
   public deviceId:string = '';
   public listEquipServices:any = [];
   public titles:any = null;
+  public isShowDialog:boolean = false;
 
   showDialog(){
+    this.isShowDialog = true;
     document.getElementById('outService').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
     new PerfectScrollbar('#serviceScroll', {
@@ -143,7 +176,8 @@ export class ElistComponent implements OnInit {
     });
   }
   hideDialog(){
-    document.getElementById('outService').style.display = 'none';
+    this.isShowDialog = false;
+    //document.getElementById('outService').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
   }
 
@@ -189,6 +223,24 @@ export class ElistComponent implements OnInit {
         this.listEquipServices = _.merge(this.listEquipServices, ele.deviceServices);
       });
     }
+  }
+
+
+  public isShowDialogEquip:boolean = false;
+  public currentEquip:any = {alias: ''};
+  hideEquipDialog(){
+    this.isShowDialogEquip = false;
+    document.getElementById('overlay').style.display = 'none';
+  }
+  showEquipDialog(equip){
+    this.isShowDialogEquip = true;
+    this.currentEquip = equip;
+    document.getElementById('modifyEquipName').style.display = 'block';
+  }
+  confirmEquipName(name){
+    this.currentEquip.alias = name;
+    this.eserv.UpdateEquipName(this.currentEquip, res=>{});
+    this.hideEquipDialog();
   }
 
 }

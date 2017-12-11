@@ -12,7 +12,7 @@
 	<div class="rg-con">
 		<p>
 			离线时长：{{RouterStatus.offlineSpan}}小时{{RouterStatus.offlineMinute}}分钟<br/>
-			离线时刻：{{RouterStatus.offTime}}
+			离线时刻：{{RouterStatus.offTime | date: 'y年M月d日 H时m分s秒'}}
 		</p>
 	</div>
 </div>

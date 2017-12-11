@@ -97,4 +97,56 @@ export class EquipService {
 			callback(res);
 		})
 	}
+
+	public getRes(apMac, callback){
+        this.rest.all("ext").customGET("v1/vscan?apMacAddr=" + apMac).subscribe(res=>{
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+	}
+	
+	public getRoutes(email, pagenum, pagesize, callback){
+		this.rest.all("squirrel").customGET("v1/devices/aps/overview?emailAddr=" + email + "&pageNum=" + pagenum + "&pageSize=" + pagesize).subscribe(res=>{
+			callback(res);
+		}, ()=>{
+			console.log("Internal Server Error!");
+		});
+	}
+
+	public UpdateRouterName(user:any, callback){
+		let param = {
+			"alias": user.alias,
+			"emailAddr": user.emailAddr,
+			"id": user.id,
+			"phoneNumber": user.phoneNumber,
+			"userId": user.userId
+		};
+		this.rest.all("squirrel").customPOST(param, "v1/users/update").subscribe(res=>{
+			callback(res);
+		});
+	}
+
+	public UpdateEquipName(equip:any, callback){
+		let param = {
+			"alias": equip.alias,
+			"apMacAddr": equip.apMacAddr,
+			"createTime": equip.createTime,
+			"deviceMacAddr": equip.deviceMacAddr,
+			"deviceType": equip.deviceType,
+			"hostName": equip.hostName,
+			"id": equip.id,
+			"ip": equip.ip,
+			"lastStatusTime": equip.lastStatusTime,
+			"os": equip.os,
+			"status": equip.status,
+			"timeAdded": equip.createTime,
+			"updateTime": equip.updateTime,
+			"userId": equip.userId,
+			"vendor": equip.vendor
+		};
+		this.rest.all("squirrel").customPOST(param, "v1/devices/update").subscribe(res=>{
+			callback(res);
+		});
+	}
 } 

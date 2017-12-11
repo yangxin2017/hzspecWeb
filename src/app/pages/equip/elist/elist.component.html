@@ -1,10 +1,13 @@
 <div class="infors">
-	<div class="title">已授权设备列表</div>
+	<div class="title">
+		<span [class.sel]="pageType=='yes'" (click)="changeType('yes')" class="tl">已授权设备[{{okCount}}个]</span>&nbsp;&nbsp;&nbsp;&nbsp;
+		<span [class.sel]="pageType!='yes'" (click)="changeType('no')" class="tl">待授权设备[{{readyCount}}个]</span>
+	</div>
 	<div class="lists relpos" id="equipScroll">
 		<div class="ls" *ngFor="let equ of data">
 			<div class="hd">
 				<img src="assets/img/equip/{{equ.ename}}{{equ.status_str}}.png" alt="" />
-				<b class="name">{{equ.alias ? equ.alias : equ.deviceMacAddr}}</b>
+				<b class="name" (click)="showEquipDialog(equ)">{{equ.alias ? equ.alias : equ.deviceMacAddr}}</b>
 				<a href="javascript:void(0)" (click)="authDev(equ.id, '20')" [class.sel]="equ.status=='20'" class="fr white">白名单</a>
 				<a href="javascript:void(0)" (click)="authDev(equ.id, '40')" [class.sel]="equ.status=='40'" class="xssy">限时使用</a>
 				<a href="javascript:void(0)" (click)="authDev(equ.id, '9-17')" [class.sel]="equ.status=='9-17'" class="lssq">临时授权</a>
@@ -39,7 +42,7 @@
 	</div>
 </div>
 
-<div class="dialog" id="outService">
+<div class="dialog animated" id="outService" [class.flipInX]="isShowDialog" [class.flipOutX]="!isShowDialog">
 	<div class="hd">
 		<span class="title">外部端口</span>
 		<img class="close" (click)="hideDialog()" src="assets/img/close.png" alt="" />
@@ -62,6 +65,23 @@
 				</div>
 			</div>
 
+		</div>
+	</div>
+</div>
+
+
+<div class="dialog animated" id="modifyEquipName" [class.flipInX]="isShowDialogEquip" [class.flipOutX]="!isShowDialogEquip">
+	<div class="hd">
+		<span class="title">修改设备别名</span>
+		<img class="close" (click)="hideEquipDialog()" src="assets/img/close.png" alt="" />
+	</div>
+	<div class="bd">
+		<div class="d-con">
+		<input #inp class="inp-txt" type="text" [value]="currentEquip.alias" />
+		</div>
+		<div class="d-buts">
+		<input type="button" class="but but-cancle" (click)="hideEquipDialog()" value="取消" />
+		<input type="button" class="but btn-confirm" (click)="confirmEquipName(inp.value)" value="确定" />
 		</div>
 	</div>
 </div>

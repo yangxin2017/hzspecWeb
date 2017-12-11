@@ -5,6 +5,9 @@
     .scroll-container{
         height: calc(100% - 180px);
         overflow: auto;
+        &.net{
+            height: calc(100% - 10px);
+        }
     }
     .pos{
         position:absolute;
@@ -23,6 +26,12 @@
     }
     .rg{margin-left:50%;padding: 20px;overflow:hidden;height:100%;
         .tl{text-align: center;font-size:16px;color:#07345E;}
+        table{
+            margin-top:30px;
+            td{
+                color:#07345E;font-size:14px;height: 60px;
+            }
+        }
     }
 
     .but-avatar{

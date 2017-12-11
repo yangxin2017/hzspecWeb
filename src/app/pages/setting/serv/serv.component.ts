@@ -15,6 +15,11 @@ export class ServComponent implements OnInit {
       wheelPropagation: true,
       minScrollbarLength: 20
     });
+    new PerfectScrollbar('#servnetScroll', {
+      wheelSpeed: 2,
+      wheelPropagation: true,
+      minScrollbarLength: 20
+    });
   }
 
 }

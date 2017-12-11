@@ -23,7 +23,12 @@ export class NinforComponent implements OnInit, OnDestroy {
     devcount: 0,
     alertcount: 0,
     alias: '',
-    mac: ''
+    mac: '',
+
+    id: '',
+    emailAddr: '',
+    phoneNumber: '',
+    userId: ''
   };
 
   public RouterStatus:any = {
@@ -49,6 +54,11 @@ export class NinforComponent implements OnInit, OnDestroy {
       this.routerInfor.alias = res.user.alias;
       this.routerInfor.mac = res.user.apMacAddr;
       this.routerInfor.ports = _.take(res.ports, 5);
+      //update
+      this.routerInfor.id = res.user.id;
+      this.routerInfor.emailAddr = res.user.emailAddr;
+      this.routerInfor.phoneNumber = res.user.phoneNumber;
+      this.routerInfor.userId = res.user.userId;
     });
 
     this.initWebSocket(apMac);
@@ -81,7 +91,7 @@ export class NinforComponent implements OnInit, OnDestroy {
                   this.RouterStatus.online = arr[0];
                   this.RouterStatus.offlineMinute = ((arr[1] / 60) % 60).toFixed(0);
                   this.RouterStatus.offlineSpan = (arr[1] / 60 / 60).toFixed(0);
-                  this.RouterStatus.offTime = arr[2];
+                  this.RouterStatus.offTime = arr[2].replace('"', '').replace('"', '');
               }
           });
           //实时流量
@@ -97,6 +107,7 @@ export class NinforComponent implements OnInit, OnDestroy {
   //应用流量排名
   getLLList(mac){
     if(this.routerInfor.yytop10.length <= 0){
+      document.body.style.cursor = 'wait';
       this.eserv.GetAppLLTop10(mac, res=>{
         if(res && res.length > 0){
           let result = _.map(res, (d:any)=>{
@@ -104,6 +115,7 @@ export class NinforComponent implements OnInit, OnDestroy {
           });
           this.routerInfor.yytop10 = result;
         }
+        document.body.style.cursor = 'auto';
       });
     }
 
@@ -116,6 +128,24 @@ export class NinforComponent implements OnInit, OnDestroy {
         this.routerInfor.sbtop10 = result;
       });
     }
+  }
+
+  public isShowDialog:boolean = false;
+  showDialog(){
+    this.isShowDialog = true;
+    document.getElementById('modifyRouterName').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+  hideDialog(){
+    this.isShowDialog = false;
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  confirmEquipName(val){
+    this.routerInfor.alias = val;
+    
+    this.eserv.UpdateRouterName(this.routerInfor, res=>{});
+    this.hideDialog();
   }
 
 }

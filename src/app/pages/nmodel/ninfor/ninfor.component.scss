@@ -100,3 +100,35 @@
         background-position: -383px -8px;
     }
 }
+
+.inp-txt{
+    width:100%;height:33px;border:solid 1px #81B9EA;
+    border-radius:10px;padding:0 10px;
+}
+
+.d-con{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+#modifyRouterName{
+    height: 200px;margin-top:-100px;
+    .d-buts{
+        text-align:right;
+    }
+}
+
+.btn-confirm{
+    background: linear-gradient(180deg, #2C5F8E, #0E3960);
+    border-radius:30px;color: #fff;padding:5px 15px;cursor: pointer;
+    &:hover{
+        background: linear-gradient(0deg, #2C5F8E, #0E3960);
+    }
+}
+.but-cancle{
+    background:#ccc;border-radius:30px;color:#666;padding:5px 15px;cursor: pointer;
+    &:hover{
+        background: #2C5F8E;
+        color:#fff;
+    }
+}

@@ -56,7 +56,7 @@ export class E1Component implements OnInit, OnDestroy {
                   this.RouterStatus.online = arr[0];
                   this.RouterStatus.offlineMinute = ((arr[1] / 60) % 60).toFixed(0);
                   this.RouterStatus.offlineSpan = (arr[1] / 60 / 60).toFixed(0);
-                  this.RouterStatus.offTime = arr[2];
+                  this.RouterStatus.offTime = arr[2].replace('"', '').replace('"', '');
               }
           });
           //实时流量
