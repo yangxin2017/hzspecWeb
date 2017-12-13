@@ -14,7 +14,7 @@ import * as moment from 'moment';
   providers: [EquipService]
 })
 export class NinforComponent implements OnInit, OnDestroy {
-  private routerInfor:any = {
+  public routerInfor:any = {
     wip: '',
     nip: '',
     yytop10: [],

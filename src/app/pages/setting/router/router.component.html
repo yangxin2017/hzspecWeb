@@ -10,7 +10,7 @@
 		<div class="ls" *ngFor="let rr of data">
 			<div class="hd">
 				<img src="assets/img/setting/wifi_online.png" alt="" />
-				<b class="name" (click)="showDialog(rr)">{{rr.alias}}[{{rr.mac}}]</b>
+				<b class="name cur-pointer" (click)="showDialog(rr)">{{rr.alias}}[{{rr.mac}}]</b>
 				
 				<a class="offline on" href="javascript:void(0)">在线</a>
 

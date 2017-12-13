@@ -191,3 +191,5 @@ input[type='text']:focus{
  .radio-check > label:after { content: ''; position: absolute; left: -25px; top: 0px; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; margin-left: 6px; transition: all 0.3s ease; -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; }
  .radio-check input[type='radio']:checked + label:before { border-color: #2C5F8E; } 
  .radio-check input[type='radio']:checked + label:after { background: #2C5F8E; }
+
+ .nodata{width:100%;line-height:100%;text-align:center;color:#C7E2F8;font-size:30px;padding-top:40px;}

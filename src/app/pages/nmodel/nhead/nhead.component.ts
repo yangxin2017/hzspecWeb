@@ -8,7 +8,7 @@ import { SimpleGlobal } from 'ng2-simple-global';
   styleUrls: ['./nhead.component.scss']
 })
 export class NheadComponent implements OnInit {
-  private currentUrl:string = 'dashboard';
+  public currentUrl:string = 'dashboard';
 
   constructor(
     private router:Router,

@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "build": "ng build --prod --bh /wb/ --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -26,6 +26,7 @@
     "animate.css": "^3.5.2",
     "core-js": "^2.4.1",
     "echarts": "^3.8.5",
+    "enhanced-resolve": "^3.3.0",
     "moment": "^2.19.3",
     "ng2-simple-global": "^1.2.5",
     "ngx-restangular": "^2.0.1",
@@ -39,7 +40,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-rc.1",
+    "@angular/cli": "^1.6.0",
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
@@ -49,9 +50,9 @@
     "karma": "~1.4.1",
     "karma-chrome-launcher": "~2.0.0",
     "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
