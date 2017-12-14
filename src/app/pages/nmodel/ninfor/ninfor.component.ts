@@ -141,11 +141,16 @@ export class NinforComponent implements OnInit, OnDestroy {
     document.getElementById('overlay').style.display = 'none';
   }
 
+  public inputerr:boolean = false;
   confirmEquipName(val){
-    this.routerInfor.alias = val;
-    
-    this.eserv.UpdateRouterName(this.routerInfor, res=>{});
-    this.hideDialog();
+    if(val == ''){
+      this.inputerr = true;
+    }else{
+      this.inputerr = false;
+      this.routerInfor.alias = val;
+      this.eserv.UpdateRouterName(this.routerInfor, res=>{});
+      this.hideDialog();
+    }
   }
 
 }

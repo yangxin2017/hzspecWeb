@@ -23,6 +23,8 @@
         "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css"
       ],
       "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/peity/jquery.peity.min.js",
         "../node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"
       ],
       "environmentSource": "environments/environment.ts",

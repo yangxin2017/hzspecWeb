@@ -8,7 +8,10 @@
 		<div class="ls" *ngFor="let equ of data">
 			<div class="hd">
 				<img src="assets/img/equip/{{equ.ename}}{{equ.status_str}}.png" alt="" />
-				<b class="name cur-pointer" (click)="showEquipDialog(equ)">{{equ.alias ? equ.alias : equ.deviceMacAddr}}</b>
+				<b class="name cur-pointer" (click)="showEquipDialog(equ)">
+					<img class="pen" src="assets/img/dashboard/pen2.png" width="13px" alt="" />
+					{{equ.alias ? equ.alias : equ.deviceMacAddr}}
+				</b>
 				<a href="javascript:void(0)" (click)="authDev(equ.id, '20')" [class.sel]="equ.status=='20'" class="fr white">白名单</a>
 				<a href="javascript:void(0)" (click)="authDev(equ.id, '40')" [class.sel]="equ.status=='40'" class="xssy">限时使用</a>
 				<a href="javascript:void(0)" (click)="authDev(equ.id, '9-17')" [class.sel]="equ.status=='9-17'" class="lssq">临时授权</a>
@@ -80,7 +83,7 @@
 	</div>
 	<div class="bd">
 		<div class="d-con">
-		<input #inp class="inp-txt" type="text" [value]="currentEquip.alias" />
+		<input #inp class="inp-txt animated" [class.shake]="inputerr" type="text" [value]="currentEquip.alias" />
 		</div>
 		<div class="d-buts">
 		<input type="button" class="but but-cancle" (click)="hideEquipDialog()" value="取消" />
@@ -189,7 +192,7 @@
 							<td>{{p.packetSize}}</td>
 							<td>
 								<p class="chk-chart-con">
-									
+									<span class="line">{{p.dpss}}</span>
 								</p>
 							</td>
 							<td>{{p.delta}}</td>

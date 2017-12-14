@@ -193,3 +193,5 @@ input[type='text']:focus{
  .radio-check input[type='radio']:checked + label:after { background: #2C5F8E; }
 
  .nodata{width:100%;line-height:100%;text-align:center;color:#C7E2F8;font-size:30px;padding-top:40px;}
+
+ input.shake{box-shadow:0 0 5px #bf1725;border:solid 1px #f00 !important;}

@@ -31,6 +31,10 @@
         margin-top: 20px;
         .name{
             font-size: 20px;color: #F5DB38;font-weight: bold;
+            .pen{display:none;}
+            &:hover .pen{
+                display:inline-block;
+            }
         }
         .base-infor{
             margin-top: 20px;

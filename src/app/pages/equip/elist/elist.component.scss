@@ -25,7 +25,15 @@
             .hd{
                 height:35px;line-height: 35px;
                 img{vertical-align: middle;}
-                .name{color:#053663;font-size:16px;margin-left:12px;vertical-align:middle;}
+                .name{
+                    color:#053663;font-size:16px;margin-left:12px;vertical-align:middle;
+                    .pen{display:none;}
+                    &:hover{
+                        .pen{
+                            display:inline-block;
+                        }
+                    }
+                }
                 .fr{margin-left:30px;}
                 a{margin-right:20px;color:#A4BFD8;text-decoration:none;vertical-align:middle;}
                 a.white{

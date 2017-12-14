@@ -91,12 +91,17 @@ export class RouterComponent implements OnInit {
     this.isShowDialog = false;
     document.getElementById('overlay').style.display = 'none';
   }
-
+  public inputerr:boolean = false;
   confirmEquipName(val){
-    this.currentRouter.alias = val;
-    
-    this.eserv.UpdateRouterName(this.currentRouter, res=>{});
-    this.hideDialog();
+    if(val == ''){
+      this.inputerr = true;
+    }else{
+      this.inputerr = false;
+      this.currentRouter.alias = val;
+      
+      this.eserv.UpdateRouterName(this.currentRouter, res=>{});
+      this.hideDialog();
+    }
   }
 
 }

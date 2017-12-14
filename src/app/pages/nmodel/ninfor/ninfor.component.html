@@ -8,7 +8,10 @@
   <h3 class="title">网关信息</h3>
 
   <div class="infor-content">
-    <span class="name cur-pointer" (click)="showDialog()">{{routerInfor.alias}}[{{routerInfor.mac}}]</span><br/>
+    <span class="name cur-pointer" (click)="showDialog()">
+        <img class="pen" src="assets/img/dashboard/pen.png" width="15px" alt="" />
+        {{routerInfor.alias}}[{{routerInfor.mac}}]
+    </span><br/>
 
     <table class="base-infor">
       <tr>
@@ -115,7 +118,7 @@
   </div>
   <div class="bd">
     <div class="d-con">
-      <input #inp class="inp-txt" type="text" [value]="routerInfor.alias" />
+      <input #inp class="inp-txt animated" [class.shake]="inputerr" type="text" [value]="routerInfor.alias" />
     </div>
     <div class="d-buts">
       <input type="button" class="but but-cancle" (click)="hideDialog()" value="取消" />

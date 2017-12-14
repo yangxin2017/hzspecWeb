@@ -10,7 +10,10 @@
 		<div class="ls" *ngFor="let rr of data">
 			<div class="hd">
 				<img src="assets/img/setting/wifi_online.png" alt="" />
-				<b class="name cur-pointer" (click)="showDialog(rr)">{{rr.alias}}[{{rr.mac}}]</b>
+				<b class="name cur-pointer" (click)="showDialog(rr)">
+					<img class="pen" src="assets/img/dashboard/pen2.png" width="13px" alt="" />
+					{{rr.alias}}[{{rr.mac}}]
+				</b>
 				
 				<a class="offline on" href="javascript:void(0)">在线</a>
 
@@ -99,7 +102,7 @@
 	</div>
 	<div class="bd">
 		<div class="d-con">
-		<input #inp class="inp-txt" type="text" [value]="currentRouter.alias" />
+		<input #inp class="inp-txt animated" [class.shake]="inputerr" type="text" [value]="currentRouter.alias" />
 		</div>
 		<div class="d-buts">
 		<input type="button" class="but but-cancle" (click)="hideDialog()" value="取消" />

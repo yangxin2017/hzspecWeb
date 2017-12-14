@@ -7,6 +7,8 @@ import * as _ from 'lodash';
 import echarts from 'echarts/dist/echarts.min';
 import * as moment from 'moment';
 
+declare var $:any;
+
 @Component({
   selector: 'app-elist',
   templateUrl: './elist.component.html',
@@ -240,10 +242,16 @@ export class ElistComponent implements OnInit {
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('modifyEquipName').style.display = 'block';
   }
+  public inputerr:boolean = false;
   confirmEquipName(name){
-    this.currentEquip.alias = name;
-    this.eserv.UpdateEquipName(this.currentEquip, res=>{});
-    this.hideEquipDialog();
+    if(name == ''){
+      this.inputerr = true;
+    }else{
+      this.inputerr = false;
+      this.currentEquip.alias = name;
+      this.eserv.UpdateEquipName(this.currentEquip, res=>{});
+      this.hideEquipDialog();
+    }
   }
 
   public isShowDialogSafe:boolean = false;
@@ -401,6 +409,10 @@ export class ElistComponent implements OnInit {
             for(let k in this.data){
               this.pdatas[k].wid = this.pdatas[k].uid + '_' + k; 
             }
+            for(let pd of this.pdatas){
+              pd.dpss = _.map(pd.dps, (d:any)=>{return d.value;});
+            }
+            setTimeout(()=>{$(".line").peity("line");}, 500);
         }else{
             this.pdatas = [];
         }
